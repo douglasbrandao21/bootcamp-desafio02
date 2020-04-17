@@ -1,5 +1,5 @@
 import React from "react";
-import { render, fireEvent, act } from "@testing-library/react";
+import { render, fireEvent, act, screen } from "@testing-library/react";
 import MockAdapter from "axios-mock-adapter";
 import api from "../services/api";
 
@@ -42,7 +42,7 @@ describe("App component", () => {
   });
 
   it("should be able to remove repository", async () => {
-    const { getByText, getByTestId } = render(<App />);
+    const { getByText, getByTestId, getByRole  } = render(<App />);
 
     apiMock.onGet("repositories").reply(200, [
       {
